@@ -1,0 +1,19 @@
+# All rights reserved
+name: Latest YouTube Playlist
+on:
+  schedule:
+    # Runs every hour
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  update-readme-with-youtube:
+    name: Update this repo's README with latest playlist from YouTube
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: gautamkrishnar/blog-post-workflow@master
+        with:
+          # using RSS feed
+          comment_tag_name: "YOUTUBE-PLAY-LIST"
+          feed_list: "https://www.youtube.com/feeds/videos.xml?playlist_id=PL8a2qeJTXVVeA7oSMEvEOmtBQE-S3Ssn7"
